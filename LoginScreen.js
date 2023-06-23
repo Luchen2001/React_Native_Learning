@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import { ScrollView, Text, StyleSheet, TextInput } from 'react-native';
+import {
+  ScrollView,
+  Text,
+  StyleSheet,
+  TextInput,
+  Pressable,
+} from 'react-native';
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const [email, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');
 
@@ -24,6 +30,11 @@ export default function LoginScreen() {
         keyboardType={'default'}
         secureTextEntry={true}
       />
+      <Pressable
+        onPress={() => navigation.navigate('Welcome')}
+        style={styles.button}>
+        <Text style={styles.buttonText}>Log in</Text>
+      </Pressable>
     </ScrollView>
   );
 }
@@ -31,6 +42,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#333333',
   },
   headerText: {
     padding: 40,
@@ -54,4 +66,20 @@ const styles = StyleSheet.create({
     borderColor: 'EDEFEE',
     backgroundColor: '#EDEFEE',
   },
+  button: {
+    fontSize: 22,
+    padding: 10,
+    marginVertical: 8,
+    margin: 100,
+    backgroundColor: '#EE9972',
+    borderColor: '#EE9972',
+    borderWidth: 2,
+    borderRadius: 50,
+  },
+  buttonText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 25,
+  },
 });
+
